@@ -1,6 +1,4 @@
 import * as React from 'react';
-
-import TextBox from '../common/textBox';
 import './storyCard.scss';
 
 interface Properties {
@@ -10,7 +8,6 @@ interface Properties {
 const StoryCard = ({ content }: Properties) => {
   return <div className="story-card">
     {content}
-    <TextBox value={content} />
   </div>; 
 };
 

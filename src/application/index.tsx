@@ -1,12 +1,17 @@
 import * as React from 'react';
 import StoryCard from '../storyboard/storyCard';
+import state from '../state';
 
 import './style.scss';
 
-const Application = () => <div className="application">
-  {[1, 2, 3].map(value => 
-    <StoryCard key={value} content={String(value)} />)
-  }
-</div>;
+type ApplicationState = typeof state;
 
-export default Application;
+const Application = ({ cards }: ApplicationState) => {
+  return <div>
+    {cards.map(card => 
+      <StoryCard key={card.id} content={card.content} />
+    )}
+  </div>;
+}
+
+export default Application; 
