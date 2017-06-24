@@ -26,6 +26,16 @@ module.exports = {
                         'css-loader'
                     ]
                 })
+            },
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, 'src'),
+                use: ExtractTextPlugin.extract({
+                    use: [
+                        { loader: 'css-loader', options: { sourceMap: true } },
+                        { loader: 'sass-loader', options: { sourceMap: true } }
+                    ]
+                })
             }
         ]
     },
