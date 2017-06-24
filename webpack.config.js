@@ -41,7 +41,8 @@ module.exports = {
     },
 
     devServer: {
-        publicPath: '/dist'
+        port: 9000,
+        publicPath: '/dist/'
     },
 
     resolve: {
@@ -52,7 +53,7 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('app.css'),
         new HtmlWebpackPlugin({
-            title: 'Storyteller [' + environment + ']',
+            title: 'StoryTeller [' + environment + ']',
             template: path.resolve(__dirname, 'src/index.ejs')
         }),
     ]

@@ -1,9 +1,13 @@
 import * as React from 'react';
 
-const StoryCard = ({ content }) => {
-  return <div>
+interface Properties {
+  content?: string;
+}
+
+const StoryCard = ({ content }: Properties) => {
+  return <div className="story-card">
     {content}
-  </div>;
+  </div>; 
 };
 
-export default StoryCard;
+export default StoryCard;   
