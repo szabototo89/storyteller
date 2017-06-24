@@ -52,7 +52,8 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('app.css'),
         new HtmlWebpackPlugin({
-            title: 'Storyteller [' + environment + ']'
+            title: 'Storyteller [' + environment + ']',
+            template: path.resolve(__dirname, 'src/index.ejs')
         }),
     ]
 }; 
