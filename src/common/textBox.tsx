@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 type Properties = {
-  onChange: (value: string) => void;
-  value: string;
+  onChange?: (value: string) => void;
+  value?: string;
 }
 
 const TextBox = ({ onChange, value }: Properties) => {

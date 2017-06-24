@@ -4,7 +4,7 @@ import TextBox from '../common/textBox';
 import './storyCard.scss';
 
 interface Properties {
-  content?: string | number;
+  content?: string;
 }
 
 const StoryCard = ({ content }: Properties) => {

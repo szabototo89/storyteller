@@ -5,7 +5,7 @@ import './style.scss';
 
 const Application = () => <div className="application">
   {[1, 2, 3].map(value => 
-    <StoryCard key={value} content={value} />)
+    <StoryCard key={value} content={String(value)} />)
   }
 </div>;
 
