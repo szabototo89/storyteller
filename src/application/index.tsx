@@ -1,16 +1,21 @@
 import * as React from 'react';
-import StoryCard from '../storyboard/storyCard';
-import state from '../state';
+import Goal from "../models/goal";
+import GoalCard from '../storyboard/goalCard';
 
 import './style.scss';
 
-type ApplicationState = typeof state;
+type ApplicationState = {
+  goals: Array<Goal>;
+};
 
-const Application = ({ cards }: ApplicationState) => {
+const Application = ({ goals = [] }: ApplicationState) => {
   return <div>
-    {cards.map(card => 
-      <StoryCard key={card.id} content={card.content} />
+    {goals.map(goal =>
+      <GoalCard key={goal.id}
+                name={goal.title}
+                stories={goal.stories} />
     )}
+
   </div>;
 }
 

@@ -7,7 +7,7 @@ type Properties = {
   stories: Array<Story>;
 };
 
-const GoalCard = ({name, stories}: Properties) => {
+const GoalCard = ({name, stories = []}: Properties) => {
   return <div className="goal-card">
     <div className="goal-card__name">
       {name}

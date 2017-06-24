@@ -1,5 +1,5 @@
 type Story = {
-    id: string;
+    id: number;
     content: string;
 }
 
