@@ -4,9 +4,9 @@ import StoryCard from '../storyboard/storyCard';
 import './style.scss';
 
 const Application = () => <div className="application">
-  <StoryCard content="Hello World" />
-  <StoryCard content="Hello World" />
-  <StoryCard content="Hello World" />
-</div>; 
+  {[1, 2, 3].map(value => 
+    <StoryCard key={value} content={value} />)
+  }
+</div>;
 
 export default Application;
