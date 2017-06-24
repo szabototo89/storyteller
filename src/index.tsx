@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import './app.css';
+import './app.scss';
 
 const Application = () => <div>
   Hello World!
