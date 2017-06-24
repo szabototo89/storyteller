@@ -26,6 +26,16 @@ module.exports = {
                         'css-loader'
                     ]
                 })
+            },
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, 'src'),
+                use: ExtractTextPlugin.extract({
+                    use: [
+                        { loader: 'css-loader', options: { sourceMap: true } },
+                        { loader: 'sass-loader', options: { sourceMap: true } }
+                    ]
+                })
             }
         ]
     },
@@ -42,7 +52,8 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('app.css'),
         new HtmlWebpackPlugin({
-            title: 'Storyteller [' + environment + ']'
+            title: 'Storyteller [' + environment + ']',
+            template: path.resolve(__dirname, 'src/index.ejs')
         }),
     ]
 }; 
