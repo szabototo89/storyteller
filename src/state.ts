@@ -1,4 +1,11 @@
 export default {
+  groups: [
+    {
+      id: 1,
+      name: 'Release 1'
+    }
+  ],
+
   goals: [
     {
       id: 1,
@@ -6,7 +13,14 @@ export default {
       stories: [
         {
           id: 1,
-          content: 'StoryCard 1'
+          content: 'StoryCard 1',
+          details: [
+            {
+              id: 1,
+              content: 'Detail 1',
+              groupId: 1
+            }
+          ]
         },
         {
           id: 2,
