@@ -1,5 +1,5 @@
-type DefaultGroup = {
+type DetailGroup = {
   name: string;
 };
 
-export default DefaultGroup;
+export default DetailGroup;
