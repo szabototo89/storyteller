@@ -1,14 +1,11 @@
 import * as React from 'react';
 
 import './style.scss';
-import Goal from "../models/goal";
+import state from '../state';
 import Storyboard from "../storyboard/storyboard";
 
-type Properties = {
-  goals: Array<Goal>;
-};
-
-const Application = ({ goals = [] }: Properties) => {
+const Application = () => {
+  const goals = state.goals;
   return <Storyboard goals={goals} />
 };
 
