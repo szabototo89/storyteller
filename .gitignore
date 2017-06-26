@@ -60,3 +60,4 @@ typings/
 # Remove dist folder
 dist
 .vscode
+.idea
