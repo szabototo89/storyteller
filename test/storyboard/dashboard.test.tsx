@@ -1,11 +1,15 @@
-import * as React from 'react';
-import { expect } from 'chai';
-import { mount, shallow } from 'enzyme';
-import { Dashboard } from '../../src/storyboard/dashboard';
+import * as React from "react";
+import { expect } from "chai";
+import { mount, shallow } from "enzyme";
+
+import { Dashboard } from "../../src/storyboard/dashboard";
 
 describe("Dashboard component", () => {
-  it('should have a .dashboard element', () => {
+  it("should have a .dashboard element", () => {
     const component = shallow(<Dashboard />);
-  })
+
+    const element = component.find(".dashboard");
+
+    expect(element.exists()).is.true;
+  });
 });
- 
