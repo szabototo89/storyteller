@@ -34,7 +34,7 @@ describe("Epic component", () => {
   });
 
   it("should show header value", () => {
-    const component = mount(<Epic header="test header" />);
+    const component = mount(<Epic content="test header" />);
 
     const containsHeader = component.someWhere(
       child => child.text() === "test header"

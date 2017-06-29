@@ -2,14 +2,14 @@ import * as React from "react";
 import { Story } from "../models/story";
 
 type Properties = {
-  header?: string;
+  content?: string;
   stories?: Array<Story>;
 };
 
-export const Epic = ({ header, stories = [] }: Properties) =>
+export const Epic = ({ content, stories = [] }: Properties) =>
   <div className="epic">
     <div className="epic__header">
-      {header}
+      {content}
     </div>
     <div className="epic__body">
       {stories.map(story =>

@@ -1,11 +1,15 @@
 import * as React from "react";
 import { expect } from "chai";
-import { mount, shallow, ShallowWrapper } from "enzyme";
+import { render, mount, shallow, ShallowWrapper } from "enzyme";
 
+import { EpicBuilder } from "../builders/epicBuilder";
 import { EpicContainer } from "../../src/storyboard/epicContainer";
 
 describe("EpicList component", () => {
-  const getChildren = <Props, State>(component: ShallowWrapper<Props, State>) => component.prop("children");
+  const anEpic = EpicBuilder.of().withContent("Lorem ipsum dolor.");
+
+  const getChildren = <Props, State>(component: ShallowWrapper<Props, State>) =>
+    component.prop("children");
 
   it("should have a .epic-container element", () => {
     const component = shallow(<EpicContainer />);
@@ -15,11 +19,31 @@ describe("EpicList component", () => {
     expect(element.exists()).is.true;
   });
 
-  it("should get epics and render them as its children", () => {
-    const component = shallow(<EpicContainer epics={[1]} />);
+  describe("should show epic content", () => {
+    it("when there is only one epic", () => {
+      const epics = [anEpic].map(builder => builder.build());
+      const component = mount(<EpicContainer epics={epics} />);
 
-    const children = getChildren(component);
+      const epicContentHasBeenShown = epics.every(epic =>
+        component.someWhere(child => child.text() === epic.content)
+      );
 
-    expect(children).to.have.length(1);
+      expect(epicContentHasBeenShown).is.true;
+    });
+
+    it("when there are more than one epic", () => {
+      const epics = [
+        anEpic.withId("1").withContent("Lorem ipsum dolor."),
+        anEpic.withId("2").withContent("Lorem ipsum dolor sit.")
+      ].map(builder => builder.build());
+
+      const component = mount(<EpicContainer epics={epics} />);
+
+      const epicContentHasBeenShown = epics.every(
+        epic => component.someWhere(child => child.text() === epic.content)
+      );
+
+      expect(epicContentHasBeenShown).is.true;
+    });
   });
 });
