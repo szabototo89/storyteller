@@ -3,7 +3,7 @@ var webpackLoader = require("./webpack.config.babel");
 var webpackConfiguration = webpackLoader();
 
 module.exports = function(config) {
-  const testFolder = "test/*.test.ts";
+  const testFolder = "test/**/*.test.tsx";
 
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
