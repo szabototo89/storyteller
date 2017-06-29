@@ -2,11 +2,10 @@ import * as React from 'react';
 
 import './style.scss';
 import state from '../state';
-import Storyboard from "../storyboard/storyboard";
 
 const Application = () => {
   const goals: any = state.goals;
-  return <Storyboard goals={goals} />
+  return null;
 };
 
 export default Application; 

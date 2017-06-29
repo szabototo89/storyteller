@@ -1,4 +1,5 @@
 const { resolve } = require("path");
+const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = () => {
@@ -47,6 +48,6 @@ module.exports = () => {
 
     devtool: "inline-sourcemap",
 
-    plugins: [new ExtractTextPlugin("bundle.css")]
+    plugins: [new ExtractTextPlugin("bundle.css"), new ProgressBarPlugin()]
   };
 };
