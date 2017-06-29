@@ -5,7 +5,7 @@ import state from '../state';
 import Storyboard from "../storyboard/storyboard";
 
 const Application = () => {
-  const goals = state.goals;
+  const goals: any = state.goals;
   return <Storyboard goals={goals} />
 };
 
