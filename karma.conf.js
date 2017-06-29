@@ -3,6 +3,8 @@ var webpackLoader = require("./webpack.config.babel");
 var webpackConfiguration = webpackLoader();
 
 module.exports = function(config) {
+  const testFolder = "test/*.test.ts";
+
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: "",
@@ -12,7 +14,7 @@ module.exports = function(config) {
     frameworks: ["mocha"],
 
     // list of files / patterns to load in the browser
-    files: ["test/*.test.ts"],
+    files: [testFolder],
 
     // list of files to exclude
     exclude: [],
@@ -20,7 +22,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      "test/*.test.ts": ["webpack"]
+      [testFolder]: ["webpack"]
     },
 
     webpack: webpackConfiguration,
