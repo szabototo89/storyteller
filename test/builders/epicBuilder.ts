@@ -3,9 +3,9 @@ import { Epic } from "../../src/models/epic";
 
 export class EpicBuilder {
     private constructor(
-      private id: string,
-      private stories: Array<Story>,
-      private content: string
+      public readonly id: string,
+      public readonly stories: Array<Story>,
+      public readonly content: string
     ) {}
 
     static of() {

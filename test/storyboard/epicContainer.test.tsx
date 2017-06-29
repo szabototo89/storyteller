@@ -20,9 +20,15 @@ describe("EpicList component", () => {
   });
 
   describe("should show epic content", () => {
+    const anEpicContainer = (epics: Array<EpicBuilder>) => {
+      return mount(
+        <EpicContainer epics={epics.map(builder => builder.build())} />
+      );
+    };
+
     it("when there is only one epic", () => {
-      const epics = [anEpic].map(builder => builder.build());
-      const component = mount(<EpicContainer epics={epics} />);
+      const epics = [anEpic];
+      const component = anEpicContainer(epics);
 
       const epicContentHasBeenShown = epics.every(epic =>
         component.someWhere(child => child.text() === epic.content)
@@ -35,12 +41,12 @@ describe("EpicList component", () => {
       const epics = [
         anEpic.withId("1").withContent("Lorem ipsum dolor."),
         anEpic.withId("2").withContent("Lorem ipsum dolor sit.")
-      ].map(builder => builder.build());
+      ];
 
-      const component = mount(<EpicContainer epics={epics} />);
+      const component = anEpicContainer(epics);
 
-      const epicContentHasBeenShown = epics.every(
-        epic => component.someWhere(child => child.text() === epic.content)
+      const epicContentHasBeenShown = epics.every(epic =>
+        component.someWhere(child => child.text() === epic.content)
       );
 
       expect(epicContentHasBeenShown).is.true;
