@@ -2,8 +2,8 @@ import * as React from "react";
 import { expect } from "chai";
 import { render, mount, shallow, ShallowWrapper } from "enzyme";
 
-import { EpicBuilder } from "../builders/epicBuilder";
-import { EpicContainer } from "../../src/storyboard/epicContainer";
+import { EpicBuilder } from "test/builders/epicBuilder";
+import { EpicContainer } from "storyboard/epicContainer";
 
 describe("EpicList component", () => {
   const anEpic = EpicBuilder.of().withContent("Lorem ipsum dolor.");

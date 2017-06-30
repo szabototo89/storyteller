@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import './style.scss';
-import state from '../state';
+import 'application/style.scss';
+import state from 'state';
 
 const Application = () => {
   const goals: any = state.goals;

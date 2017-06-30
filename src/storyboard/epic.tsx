@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Story } from "../models/story";
+import { Story } from "models/story";
 
 type Properties = {
   content?: string;

@@ -1,4 +1,4 @@
-import { Story } from "./story";
+import { Story } from "models/story";
 
 export type Epic = {
   id: string;

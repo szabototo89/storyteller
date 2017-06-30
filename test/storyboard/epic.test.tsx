@@ -2,8 +2,8 @@ import * as React from "react";
 import { expect } from "chai";
 import { mount, shallow, ShallowWrapper, ReactWrapper } from "enzyme";
 
-import { Story } from "../../src/models/story";
-import { Epic } from "../../src/storyboard/epic";
+import { Story } from "models/story";
+import { Epic } from "storyboard/epic";
 
 describe("Epic component", () => {
   const getChildren = <Props, State>(component: ShallowWrapper<Props, State>) =>
