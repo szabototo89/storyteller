@@ -43,6 +43,10 @@ module.exports = () => {
     },
 
     resolve: {
+      alias: {
+        test: resolve(__dirname, "test")
+      },
+      modules: [resolve(__dirname, "src"), resolve(__dirname, "node_modules")],
       extensions: [".js", ".ts", ".tsx", ".css", ".scss"]
     },
 
