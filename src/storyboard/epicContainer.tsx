@@ -9,4 +9,4 @@ type Properties = {
 export const EpicContainer = ({ epics = [] }: Properties) =>
   <div className="epic-container">
     {epics.map(epic => <Epic key={epic.id} content={epic.content} />)}
-  </div>;
+  </div>; 
