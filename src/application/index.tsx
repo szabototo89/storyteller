@@ -3,9 +3,7 @@ import * as React from 'react';
 import 'application/style.scss';
 import state from 'state';
 
-const Application = () => {
+export const Application = () => {
   const goals: any = state.goals;
-  return null;
+  return <div>Application</div>;
 };
-
-export default Application; 

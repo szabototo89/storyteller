@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "rimraf ./dist",
-    "build": "webpack",
+    "build": "webpack -s",
     "prebuild:watch": "rimraf ./dist",
-    "build:watch": "webpack-dev-server",
+    "build:watch": "webpack-dev-server --open",
     "start": "http-server ./ -p 8080",
     "test": "karma start"
   },

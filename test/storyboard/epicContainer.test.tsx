@@ -31,7 +31,7 @@ describe("EpicList component", () => {
       const component = anEpicContainer(epics);
 
       const epicContentHasBeenShown = epics.every(epic =>
-        component.someWhere(child => child.text() === epic.content)
+        component.findWhere(child => child.text() === epic.content).length > 0
       );
 
       expect(epicContentHasBeenShown).is.true;
@@ -46,7 +46,7 @@ describe("EpicList component", () => {
       const component = anEpicContainer(epics);
 
       const epicContentHasBeenShown = epics.every(epic =>
-        component.someWhere(child => child.text() === epic.content)
+        component.findWhere(child => child.text() === epic.content).length > 0
       );
 
       expect(epicContentHasBeenShown).is.true;

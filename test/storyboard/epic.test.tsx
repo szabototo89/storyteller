@@ -47,10 +47,7 @@ describe("Epic component", () => {
     const anEpicWith = (stories: Array<Story>) =>
       mount(<Epic stories={stories} />);
 
-    const expectEveryStoryHasBeenShown = (
-      component: ReactWrapper<any, any>,
-      stories: Array<Story>
-    ) => {
+    const expectEveryStoryHasBeenShown = (component: ReactWrapper<any, any>, stories: Array<Story>) => {
       const everyStoryHasBeenShown = stories.every(story =>
         component.someWhere(child => child.text() === story.content)
       );

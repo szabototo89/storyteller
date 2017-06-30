@@ -1,17 +1,14 @@
 const { resolve } = require("path");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = () => {
-  const sourceFolder = resolve("src");
-  const destinationFolder = resolve("dist");
-
   return {
-    context: sourceFolder,
+    context: resolve("src"),
     entry: "./index.tsx",
     output: {
-      path: destinationFolder,
-      publicPath: "/dist/",
+      path: resolve("dist"),
       filename: "bundle.js"
     },
 
@@ -20,7 +17,14 @@ module.exports = () => {
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
-          use: [{ loader: "awesome-typescript-loader" }]
+          use: [
+            {
+              loader: "awesome-typescript-loader",
+              options: {
+                silent: true
+              }
+            }
+          ]
         },
         {
           test: /\.css$/,
@@ -52,6 +56,13 @@ module.exports = () => {
 
     devtool: "inline-sourcemap",
 
-    plugins: [new ExtractTextPlugin("bundle.css"), new ProgressBarPlugin()]
+    plugins: [
+      new ExtractTextPlugin("bundle.css"),
+      new ProgressBarPlugin(),
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+        inject: "body"
+      })
+    ]
   };
 };
