@@ -3,7 +3,7 @@ import { expect } from "chai";
 import { mount, shallow } from "enzyme";
 
 import { Dashboard } from "storyboard/dashboard";
-import { EpicBuilder } from "test/builders/epicBuilder";
+import { EpicBuilder, anEpic } from "test/builders/epicBuilder";
 import { TaskGroup } from "models/taskGroup";
 import { aTask } from "test/builders/taskBuilder";
 import { aTaskGroup } from "test/builders/taskGroupBuilder";
@@ -19,9 +19,9 @@ describe("Dashboard component", () => {
 
   describe("epics", () => {
     it("are got as property", () => {
-      const anEpic = EpicBuilder.anEpic().build();
+      const aSimpleEpic = anEpic().build();
 
-      const passingEpics = () => shallow(<Dashboard epics={[anEpic]} />);
+      const passingEpics = () => shallow(<Dashboard epics={[aSimpleEpic]} />);
 
       expect(passingEpics).does.not.throw();
     });

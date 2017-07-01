@@ -1,9 +1,9 @@
-import { TestBuilder } from "test/utils/testBuilder";
+import { TestBuilder, isRequired } from "test/utils/testBuilder";
 import { Task } from "models/task";
 import { WeakType } from "test/utils/weakType";
 
 export class TaskBuilder implements TestBuilder<Task> {
-  constructor(private readonly task: Task) {}
+  constructor(private readonly task: WeakType<Task> = {}) {}
 
   private copy(task: WeakType<Task>) {
     return new TaskBuilder({
@@ -21,13 +21,15 @@ export class TaskBuilder implements TestBuilder<Task> {
   }
 
   build(): Task {
-    return this.task;
+    const { task = {} } = this;
+
+    return {
+      id: isRequired(task.id, { defaultValue: "1" }),
+      content: isRequired(task.content)
+    };
   }
 }
 
 export function aTask() {
-  return new TaskBuilder({
-    id: "1",
-    content: "task content"
-  });
+  return new TaskBuilder();
 }

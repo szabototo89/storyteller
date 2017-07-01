@@ -2,25 +2,16 @@ import { Story } from "models/story";
 import { Epic } from "models/epic";
 
 import { WeakType } from "test/utils/weakType";
-import { TestBuilder } from "test/utils/testBuilder";
+import { TestBuilder, isRequired } from "test/utils/testBuilder";
 
 export class EpicBuilder implements TestBuilder<Epic> {
-  private constructor(
-    public readonly id: string,
-    public readonly stories: Array<Story>,
-    public readonly content: string
-  ) { }
+  public constructor(private readonly epic: WeakType<Epic> = {}) {}
 
-  static anEpic() {
-    return new EpicBuilder("", [], "");
-  }
-
-  private copy({ id, stories, content }: WeakType<Epic>) {
-    return new EpicBuilder(
-      id || this.id,
-      stories || this.stories,
-      content || this.content
-    );
+  private copy(epic: WeakType<Epic>) {
+    return new EpicBuilder({
+      ...this.epic,
+      ...epic
+    });
   }
 
   withId(id: string): EpicBuilder {
@@ -35,8 +26,21 @@ export class EpicBuilder implements TestBuilder<Epic> {
     return this.copy({ content });
   }
 
-  build(): Epic {
-    const { id, stories, content } = this;
-    return { id, content, stories };
+  getContent() {
+    return this.epic.content;
   }
+
+  build(): Epic {
+    const { epic = {} } = this;
+
+    return {
+      id: isRequired(epic.id, { defaultValue: "10" }),
+      content: isRequired(epic.content, { defaultValue: '' }),
+      stories: isRequired(epic.stories, { defaultValue: [] })
+    };
+  } 
+}
+
+export function anEpic() {
+  return new EpicBuilder();
 }
