@@ -17,29 +17,6 @@ describe("Dashboard component", () => {
     expect(element.exists()).is.true;
   });
 
-  describe("task groups", () => {
-    it("are got as property", () => {
-      const aSimpleTask = aTask().withContent("Lorem ipsum dolor sit.");
-      const taskGroup = aTaskGroup()
-        .withId("1")
-        .withName("lorem")
-        .withTasks(aSimpleTask)
-        .build();
-
-      const passingTaskGroups = () =>
-        shallow(<Dashboard taskGroups={[taskGroup]} />);
-
-      expect(passingTaskGroups).does.not.throw();
-    });
-
-    it("is optional", () => {
-      const passingUndefinedTaskGroups = () =>
-        shallow(<Dashboard taskGroups={undefined} />);
-
-      expect(passingUndefinedTaskGroups).does.not.throw();
-    });
-  });
-
   describe("epics", () => {
     it("are got as property", () => {
       const anEpic = EpicBuilder.anEpic().build();

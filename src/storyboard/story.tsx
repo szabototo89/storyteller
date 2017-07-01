@@ -1,10 +1,11 @@
 import * as React from "react";
+import { Container } from "common/container";
 
 type Properties = {
   content?: string;
 };
 
 export const Story = ({ content }: Properties) =>
-  <div className="story">
+  <Container className="story">
     {content}
-  </div>;
+  </Container>;

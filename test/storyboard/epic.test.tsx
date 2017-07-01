@@ -59,11 +59,12 @@ describe("Epic component", () => {
     });
 
     it("when there are one or more stories", () => {
-      const stories = [
+      const stories: Array<Story> = [
         {
           id: "1",
           content:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illo aperiam! Ipsum, dicta vero quaerat facilis voluptate perferendis, suscipit consectetur, esse ratione aliquam voluptatem cupiditate, quos ducimus praesentium rerum id."
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, illo aperiam! Ipsum, dicta vero quaerat facilis voluptate perferendis, suscipit consectetur, esse ratione aliquam voluptatem cupiditate, quos ducimus praesentium rerum id.",
+          tasks: []
         }
       ];
 

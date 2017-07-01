@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Story } from "models/story";
+import { Container } from "common/container";
 
 type Properties = {
   content?: string;
@@ -7,15 +8,15 @@ type Properties = {
 };
 
 export const Epic = ({ content, stories = [] }: Properties) =>
-  <div className="epic">
-    <div className="epic__header">
+  <Container className="epic">
+    <Container className="epic__header">
       {content}
-    </div>
-    <div className="epic__body">
+    </Container>
+    <Container className="epic__body">
       {stories.map(story =>
-        <div key={story.id}>
+        <Container key={story.id}>
           {story.content}
-        </div>
+        </Container>
       )} 
-    </div>
-  </div>;
+    </Container>
+  </Container>;

@@ -51,4 +51,10 @@ describe("EpicList component", () => {
       expect(epicContentHasBeenShown).to.be.true;
     });
   });
+
+  it("gets epics as optional", () => {
+    const passingUndefinedEpics = () => <EpicContainer epics={undefined} />;
+
+    expect(passingUndefinedEpics).to.not.throw();
+  });
 });
