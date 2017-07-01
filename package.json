@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rimraf ./dist",
+    "clean": "rimraf ./dist",
+    "prebuild": "npm run clean",
     "build": "webpack -s",
-    "prebuild:watch": "rimraf ./dist",
+    "prebuild:watch": "npm run clean",
     "build:watch": "webpack-dev-server --open",
     "start": "http-server ./ -p 8080",
     "test": "karma start"
@@ -31,6 +32,7 @@
     "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
     "progress-bar-webpack-plugin": "^1.9.3",
+    "react-addons-test-utils": "^15.6.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.13.2",
