@@ -6,6 +6,7 @@ import { Dashboard } from "storyboard/dashboard";
 import { Epic } from "storyboard/epic";
 import { EpicContainer } from "storyboard/epicContainer";
 import { Story } from "storyboard/story";
+import { Task } from "storyboard/task";
 
 describe("Storyboard components", () => {
   const isPrimitiveComponent = (child: ShallowWrapper<any, any>) => {
@@ -18,7 +19,8 @@ describe("Storyboard components", () => {
       <Dashboard />,
       <Epic />,
       <EpicContainer />,
-      <Story />
+      <Story />,
+      <Task />
     ].map(component => shallow(component));
 
     const containsPrimitive = components.some(component =>
