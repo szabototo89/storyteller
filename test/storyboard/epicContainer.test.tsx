@@ -1,22 +1,21 @@
 import * as React from "react";
 import { expect } from "chai";
-import { render, mount, shallow, ShallowWrapper } from "enzyme";
+import { render, mount, shallow, ShallowWrapper, ReactWrapper } from "enzyme";
 
-import { EpicBuilder } from "test/builders/epicBuilder";
 import { EpicContainer } from "storyboard/epicContainer";
 
-describe("EpicList component", () => {
-  const anEpic = EpicBuilder.of().withContent("Lorem ipsum dolor.");
+import { EpicBuilder } from "test/builders/epicBuilder";
+import { findText, equalsText } from "test/utils/enzymeHelpers";
 
-  const getChildren = <Props, State>(component: ShallowWrapper<Props, State>) =>
-    component.prop("children");
+describe("EpicList component", () => {
+  const anEpic = EpicBuilder.anEpic().withContent("Lorem ipsum dolor.");
 
   it("should have a .epic-container element", () => {
     const component = shallow(<EpicContainer />);
 
     const element = component.find(".epic-container");
 
-    expect(element.exists()).is.true;
+    expect(element.exists()).to.be.true;
   });
 
   describe("should show epic content", () => {
@@ -30,11 +29,11 @@ describe("EpicList component", () => {
       const epics = [anEpic];
       const component = anEpicContainer(epics);
 
-      const epicContentHasBeenShown = epics.every(epic =>
-        component.findWhere(child => child.text() === epic.content).length > 0
-      );
+      const epicContentHasBeenShown = epics
+        .map(epic => epic.content)
+        .every(equalsText(component));
 
-      expect(epicContentHasBeenShown).is.true;
+      expect(epicContentHasBeenShown).to.be.true;
     });
 
     it("when there are more than one epic", () => {
@@ -45,11 +44,11 @@ describe("EpicList component", () => {
 
       const component = anEpicContainer(epics);
 
-      const epicContentHasBeenShown = epics.every(epic =>
-        component.findWhere(child => child.text() === epic.content).length > 0
-      );
+      const epicContentHasBeenShown = epics
+        .map(epic => epic.content)
+        .every(equalsText(component));
 
-      expect(epicContentHasBeenShown).is.true;
+      expect(epicContentHasBeenShown).to.be.true;
     });
   });
 });

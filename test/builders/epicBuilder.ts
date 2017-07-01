@@ -1,21 +1,17 @@
 import { Story } from "models/story";
 import { Epic } from "models/epic";
 
-type Builder<Type> = {
-  readonly value: Type;
-  // readonly [propertyName in keyof Type]: Type[propertyName];
-};
+import { WeakType } from "test/utils/weakType";
+import { TestBuilder } from "test/utils/testBuilder";
 
-type WeakType<Type> = { [propertyName in keyof Type]?: Type[propertyName] };
-
-export class EpicBuilder {
+export class EpicBuilder implements TestBuilder<Epic> {
   private constructor(
     public readonly id: string,
     public readonly stories: Array<Story>,
     public readonly content: string
-  ) {}
+  ) { }
 
-  static of() {
+  static anEpic() {
     return new EpicBuilder("", [], "");
   }
 

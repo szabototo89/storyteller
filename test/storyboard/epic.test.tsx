@@ -6,9 +6,6 @@ import { Story } from "models/story";
 import { Epic } from "storyboard/epic";
 
 describe("Epic component", () => {
-  const getChildren = <Props, State>(component: ShallowWrapper<Props, State>) =>
-    component.prop("children");
-
   it("should be wrapped into a .epic element", () => {
     const component = mount(<Epic />);
 
@@ -44,8 +41,7 @@ describe("Epic component", () => {
   });
 
   describe("should contain stories and render their values", () => {
-    const anEpicWith = (stories: Array<Story>) =>
-      mount(<Epic stories={stories} />);
+    const anEpicWith = (stories: Array<Story>) => mount(<Epic stories={stories} />);
 
     const expectEveryStoryHasBeenShown = (component: ReactWrapper<any, any>, stories: Array<Story>) => {
       const everyStoryHasBeenShown = stories.every(story =>

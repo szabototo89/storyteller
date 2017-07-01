@@ -1,0 +1,12 @@
+Dashboard
+  EpicList
+    Epic
+      *EpicHeader
+      *EpicBody
+        Story
+  TaskGroupContainer
+    TaskGroup
+      *TaskGroupHeader
+      *TaskGroupBody
+        TaskContainer
+          Task
