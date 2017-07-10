@@ -41,7 +41,7 @@ describe("Epic component", () => {
   });
 
   describe("should contain stories and render their values", () => {
-    const anEpicWith = (stories: Array<Story>) => mount(<Epic stories={stories} />);
+    const anEpicComponentWith = (stories: Array<Story>) => mount(<Epic stories={stories} />);
 
     const expectEveryStoryHasBeenShown = (component: ReactWrapper<any, any>, stories: Array<Story>) => {
       const everyStoryHasBeenShown = stories.every(story =>
@@ -53,7 +53,7 @@ describe("Epic component", () => {
 
     it("when there is no story", () => {
       const stories: Array<Story> = [];
-      const component = anEpicWith(stories);
+      const component = anEpicComponentWith(stories);
 
       expectEveryStoryHasBeenShown(component, stories).is.true;
     });
@@ -68,7 +68,7 @@ describe("Epic component", () => {
         }
       ];
 
-      const component = anEpicWith(stories);
+      const component = anEpicComponentWith(stories);
 
       expectEveryStoryHasBeenShown(component, stories).is.true;
     });
