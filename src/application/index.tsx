@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-import 'application/style.scss';
-import state from 'state';
+import "application/style.scss";
+import state from "state";
 
 export const Application = () => {
   const goals: any = state.goals;
