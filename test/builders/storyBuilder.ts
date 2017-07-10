@@ -3,7 +3,7 @@ import { Story } from "models/story";
 import { WeakType } from "test/utils/weakType";
 import { TaskBuilder } from "test/builders/taskBuilder";
 
-import { build } from "test/utils/builder";
+import { build } from "test/utils/testBuilder";
 import * as uuid from "uuid/v4";
 
 export class StoryBuilder implements TestBuilder<Story> {
