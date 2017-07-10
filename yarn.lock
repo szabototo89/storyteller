@@ -21,6 +21,10 @@
   version "2.2.41"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.41.tgz#e27cf0817153eb9f2713b2d3f6c68f1e1c3ca608"
 
+"@types/node@*":
+  version "8.0.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.10.tgz#12efec9183b072d5f951cf86395a4c780f868a17"
+
 "@types/react-dom@^15.5.1":
   version "15.5.1"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-15.5.1.tgz#f3c3e14c682785923c7d64583537df319442dec1"
@@ -30,6 +34,12 @@
 "@types/react@*", "@types/react@^15.0.31":
   version "15.0.33"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.33.tgz#442b025b3ee7d65f25c5cf495b7bd773855c079b"
+
+"@types/uuid@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-3.0.0.tgz#be93b14bcf97f59c079a9e58754960b5efd946c3"
+  dependencies:
+    "@types/node" "*"
 
 abbrev@1:
   version "1.1.0"
@@ -4929,7 +4939,7 @@ uuid@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 
-uuid@^3.0.0, uuid@^3.0.1:
+uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
