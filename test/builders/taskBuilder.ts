@@ -1,7 +1,8 @@
 import { TestBuilder, isRequired } from "test/utils/testBuilder";
 import { Task } from "models/task";
 import { WeakType } from "test/utils/weakType";
-import * as uuid from 'uuid/v4';
+import * as uuid from "uuid/v4";
+import { TaskGroupBuilder } from "test/builders/taskGroupBuilder";
 
 export class TaskBuilder implements TestBuilder<Task> {
   constructor(private readonly task: WeakType<Task> = {}) {}
@@ -21,14 +22,18 @@ export class TaskBuilder implements TestBuilder<Task> {
     return this.copy({ content });
   }
 
+  withTaskGroup(taskGroup: TaskGroupBuilder) {
+    return this.copy({ taskGroupId: taskGroup.build().id });
+  }
+
   build(): Task {
     const { task = {} } = this;
 
     return {
       id: isRequired(task.id, { defaultValue: "1" }),
       content: isRequired(task.content),
-      taskGroup: isRequired(task.taskGroup, {
-        defaultValue: { id: "0", name: 'default' }
+      taskGroupId: isRequired(task.taskGroupId, {
+        defaultValue: "0"
       })
     };
   }

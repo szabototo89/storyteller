@@ -5,8 +5,9 @@ import { mount, shallow, ReactWrapper } from "enzyme";
 import { TaskGroupContainer } from "storyboard/taskGroupContainer";
 import { build } from "test/utils/testBuilder";
 import { aTaskGroup } from "test/builders/taskGroupBuilder";
-import { aTaskWithId } from "test/builders/taskBuilder";
+import { aTaskWithId, aTask } from "test/builders/taskBuilder";
 import { equalsText } from "test/utils/enzymeHelpers";
+import { aStory } from "test/builders/storyBuilder";
 
 describe("TaskGroupContainer component", () => {
   it("contains .task-group-container html element", () => {
@@ -30,20 +31,31 @@ describe("TaskGroupContainer component", () => {
   });
 
   it("shows tasks in the task groups", () => {
-    const taskGroups = build([
-      aTaskGroup().withId("1"),
-      aTaskGroup()
+    const taskGroups = [aTaskGroup().withId("1"), aTaskGroup().withId("2")];
+    const [firstTaskGroup, secondTaskGroup] = taskGroups;
+    const stories = build([
+      aStory()
+        .withId("1")
+        .withTasks(
+          aTaskWithId()
+            .withContent("test content")
+            .withTaskGroup(firstTaskGroup)
+        ),
+      aStory()
         .withId("2")
-        .withTasksByEpic(
-          [
-            aTaskWithId().withContent("test content"),
-            aTaskWithId().withContent("test content 2")
-          ],
-          [aTaskWithId().withContent("test content 3")]
+        .withTasks(
+          aTaskWithId()
+            .withContent("test content 2")
+            .withTaskGroup(firstTaskGroup),
+          aTaskWithId()
+            .withContent("test content 3")
+            .withTaskGroup(secondTaskGroup)
         )
     ]);
 
-    const component = mount(<TaskGroupContainer taskGroups={taskGroups} />);
+    const component = mount(
+      <TaskGroupContainer taskGroups={build(taskGroups)} stories={stories} />
+    );
 
     const showsTaskContents = [
       "test content",

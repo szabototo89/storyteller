@@ -73,24 +73,37 @@ describe("Dashboard component", () => {
     });
 
     it("shows every task content", () => {
+      const taskGroups = [aTaskGroup().withId("1"), aTaskGroup().withId("2")];
+      const [firstTaskGroup, secondTaskGroup] = taskGroups;
+
       const epics = build([
         anEpicWithId().withStories(
           aStoryWithId()
             .withContent("test content")
             .withTasks(
-              aTaskWithId().withContent("test task 1"),
-              aTaskWithId().withContent("test task 2")
+              aTaskWithId()
+                .withContent("test task 1")
+                .withTaskGroup(firstTaskGroup),
+              aTaskWithId()
+                .withContent("test task 2")
+                .withTaskGroup(secondTaskGroup)
             )
         ),
         anEpicWithId().withStories(
           aStoryWithId()
             .withContent("test content 2")
-            .withTasks(aTaskWithId().withContent("test task 3")) 
+            .withTasks(
+              aTaskWithId()
+                .withContent("test task 3")
+                .withTaskGroup(firstTaskGroup)
+            )
         )
       ]);
 
-      const component = mount(<Dashboard epics={epics} />);
- 
+      const component = mount(
+        <Dashboard epics={epics} taskGroups={build(taskGroups)} />
+      );
+
       const containsEveryTaskContent = [
         "test task 1",
         "test task 2",

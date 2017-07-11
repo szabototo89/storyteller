@@ -6,6 +6,8 @@ import { TaskGroup } from "storyboard/taskGroup";
 import { aTaskGroup } from "test/builders/taskGroupBuilder";
 import { equalsText } from "test/utils/enzymeHelpers";
 import { aTaskWithId } from "test/builders/taskBuilder";
+import { build } from "test/utils/testBuilder";
+import { aStory } from "test/builders/storyBuilder";
 
 describe("TaskGroup component", () => {
   const checkClassNames = (classNames: Array<string>) => (
@@ -39,20 +41,25 @@ describe("TaskGroup component", () => {
   });
 
   it("shows task contents when there is associated task to group", () => {
-    const taskGroup = aTaskGroup()
-      .withTasksByEpic(
-        [
-          aTaskWithId().withContent("test content"),
-          aTaskWithId().withContent("test content 2")
-        ],
-        [
-          aTaskWithId().withContent("test content 3"),
-          aTaskWithId().withContent("test content 4")
-        ]
-      )
-      .build();
+    const taskGroup = aTaskGroup().withName("test task group");
+    const stories = build([
+      aStory()
+        .withId("1")
+        .withTasks(
+          aTaskWithId().withTaskGroup(taskGroup).withContent("test content"),
+          aTaskWithId().withTaskGroup(taskGroup).withContent("test content 2")
+        ),
+      aStory()
+        .withId("2")
+        .withTasks(
+          aTaskWithId().withTaskGroup(taskGroup).withContent("test content 3"),
+          aTaskWithId().withTaskGroup(taskGroup).withContent("test content 4")
+        )
+    ]);
 
-    const component = mount(<TaskGroup taskGroup={taskGroup} />);
+    const component = mount(
+      <TaskGroup taskGroup={taskGroup.build()} stories={stories} />
+    );
 
     const containsTaskContents = [
       "test content",

@@ -21,12 +21,6 @@ export class TaskGroupBuilder implements TestBuilder<TaskGroup> {
     return this.copy({ name });
   }
 
-  withTasksByEpic(...tasksByEpic: Array<Array<TaskBuilder>>) {
-    return this.copy({
-      tasksByEpic: tasksByEpic.map(tasks => build(tasks))
-    });
-  }
-
   build(): TaskGroup {
     return this.taskGroup;
   }
@@ -35,7 +29,6 @@ export class TaskGroupBuilder implements TestBuilder<TaskGroup> {
 export function aTaskGroup() {
   return new TaskGroupBuilder({
     id: "1",
-    name: 'test',
-    tasksByEpic: []
+    name: 'test'
   });
 }

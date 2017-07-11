@@ -1,9 +1,9 @@
 import * as React from "react";
+import { Dashboard } from "storyboard/dashboard";
 
 import "application/style.scss";
 import state from "state";
 
 export const Application = () => {
-  const goals: any = state.goals;
-  return <div>Application</div>;
+  return <Dashboard {...state} />;
 };
