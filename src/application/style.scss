@@ -1,0 +1,96 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:after, *:before {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.epic-container {
+  display: flex;
+  padding-left: 100px;
+}
+
+.epic {
+  padding-right: 5px;
+}
+
+.epic__header {
+  padding: 20px;
+  display: inline-block;
+}
+
+.epic__body {
+  display: flex;
+}
+
+.story {
+  width: 200px;
+  height: 100px;
+  
+  margin-right: 5px;
+  text-align: center;
+}
+
+.story:last-of-type {
+  margin-right: inherit;
+}
+
+.task-group {
+  display: flex;
+}
+
+.task-group__header {
+  min-width: 100px;
+  width: 100px;
+}
+
+.task-group__body {
+  display: flex;
+}
+
+.task-container {
+  min-width: 200px;
+}
+
+.task-container:not(:first-child) {
+  margin-left: 5px;
+}
+
+.task {
+  height: 100px;
+  
+  margin: 5px 0px;
+}
+
+/* DEBUG */
+
+.task-group-container {
+  background-color: aqua;
+}
+
+.epic__header {
+  background-color: red;
+}
+
+.epic-container {
+  background-color: green;
+}
+
+.epic {
+  background-color: blue;
+  color: white;
+}
+
+.story {
+  background-color: yellow;
+  color: black;
+}
+
+.task {
+  background-color: gray;
+  color: white;
+}
