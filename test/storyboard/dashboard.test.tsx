@@ -3,14 +3,15 @@ import { expect } from "chai";
 import { mount, shallow } from "enzyme";
 
 import { Dashboard } from "storyboard/dashboard";
-import { EpicBuilder, anEpic, anEpicWithId } from "test/builders/epicBuilder";
 import { TaskGroup } from "models/taskGroup";
-import { aTask } from "test/builders/taskBuilder";
-import { aTaskGroup } from "test/builders/taskGroupBuilder";
-import { build } from "test/utils/builder";
-import { equalsText } from "test/utils/enzymeHelpers";
 import { Epic } from "models/epic";
+
+import { aTask, aTaskWithId } from "test/builders/taskBuilder";
+import { aTaskGroup } from "test/builders/taskGroupBuilder";
+import { build } from "test/utils/testBuilder";
+import { equalsText } from "test/utils/enzymeHelpers";
 import { aStoryWithId } from "test/builders/storyBuilder";
+import { EpicBuilder, anEpic, anEpicWithId } from "test/builders/epicBuilder";
 
 describe("Dashboard component", () => {
   it("should have a .dashboard element", () => {
@@ -77,17 +78,24 @@ describe("Dashboard component", () => {
           aStoryWithId()
             .withContent("test content")
             .withTasks(
-              aTask().withContent("test task 1"),
-              aTask().withContent("test task 2")
+              aTaskWithId().withContent("test task 1"),
+              aTaskWithId().withContent("test task 2")
             )
+        ),
+        anEpicWithId().withStories(
+          aStoryWithId()
+            .withContent("test content 2")
+            .withTasks(aTaskWithId().withContent("test task 3")) 
         )
       ]);
 
       const component = mount(<Dashboard epics={epics} />);
-
-      const containsEveryTaskContent = ["test task 1", "test task 2"].every(
-        equalsText(component)
-      );
+ 
+      const containsEveryTaskContent = [
+        "test task 1",
+        "test task 2",
+        "test task 3"
+      ].every(equalsText(component));
       expect(containsEveryTaskContent).is.true;
     });
   });

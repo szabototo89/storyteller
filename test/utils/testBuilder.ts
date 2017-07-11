@@ -15,3 +15,7 @@ export const isRequired = <Value>(
 export type TestBuilder<Value> = {
   build(): Value;
 };
+
+export const build = <Value>(builders: Array<TestBuilder<Value>>): Array<Value> => {
+  return builders.map(builder => builder.build());
+};

@@ -1,5 +1,5 @@
 Dashboard
-  EpicList
+  EpicContainer
     Epic
       *EpicHeader
       *EpicBody
@@ -8,5 +8,5 @@ Dashboard
     TaskGroup
       *TaskGroupHeader
       *TaskGroupBody
-        TaskContainer
+        TaskContainer: tasks by epic
           Task

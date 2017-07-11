@@ -1,4 +1,4 @@
-import { TestBuilder } from "test/utils/testBuilder";
+import { TestBuilder, build } from "test/utils/testBuilder";
 import { TaskGroup } from "models/taskGroup";
 import { WeakType } from "test/utils/weakType";
 import { TaskBuilder } from "test/builders/taskBuilder";
@@ -21,9 +21,9 @@ export class TaskGroupBuilder implements TestBuilder<TaskGroup> {
     return this.copy({ name });
   }
 
-  withTasks(...tasks: Array<TaskBuilder>) {
+  withTasksByEpic(...tasksByEpic: Array<Array<TaskBuilder>>) {
     return this.copy({
-      tasks: tasks.map(task => task.build())
+      tasksByEpic: tasksByEpic.map(tasks => build(tasks))
     });
   }
 
@@ -36,6 +36,6 @@ export function aTaskGroup() {
   return new TaskGroupBuilder({
     id: "1",
     name: 'test',
-    tasks: []
+    tasksByEpic: []
   });
 }
