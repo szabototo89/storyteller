@@ -1,5 +1,7 @@
 html {
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
 }
 
 *, *:after, *:before {
@@ -9,22 +11,9 @@ html {
   border: 0;
 }
 
-.epic-container {
+.epic-container { 
   display: flex;
   padding-left: 100px;
-}
-
-.epic {
-  padding-right: 5px;
-}
-
-.epic__header {
-  padding: 20px;
-  display: inline-block;
-}
-
-.epic__body {
-  display: flex;
 }
 
 .story {
@@ -72,17 +61,8 @@ html {
   background-color: aqua;
 }
 
-.epic__header {
-  background-color: red;
-}
-
 .epic-container {
   background-color: green;
-}
-
-.epic {
-  background-color: blue;
-  color: white;
 }
 
 .story {
