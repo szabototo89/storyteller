@@ -5,7 +5,7 @@ import { mount, shallow, ShallowWrapper } from "enzyme";
 import { Task as TaskModel } from "models/task";
 import { Task } from "storyboard/task";
 
-import { findText, equalsText } from "test/testUtils/enzymeHelpers";
+import { findText, equals } from "test/testUtils/enzymeHelpers";
 import { aTask } from "test/testBuilders/taskBuilder";
 
 describe("Task component", () => {
@@ -20,12 +20,10 @@ describe("Task component", () => {
   });
 
   it("should show task content", () => {
-    const task: TaskModel = aTask()
-      .withContent('lorem ipsum')
-      .build();
+    const task: TaskModel = aTask().withContent("lorem ipsum").build();
     const component = mount(<Task task={task} />);
 
-    const containsTaskContent = equalsText(component)('lorem ipsum');
+    const containsTaskContent = equals(component).textTo("lorem ipsum");
 
     expect(containsTaskContent).to.be.true;
   });

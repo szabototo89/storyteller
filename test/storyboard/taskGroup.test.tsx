@@ -4,7 +4,7 @@ import { mount, shallow, ReactWrapper } from "enzyme";
 
 import { TaskGroup } from "storyboard/taskGroup";
 import { aTaskGroup } from "test/testBuilders/taskGroupBuilder";
-import { equalsText } from "test/testUtils/enzymeHelpers";
+import { equalsText, equals } from "test/testUtils/enzymeHelpers";
 import { aTaskWithId } from "test/testBuilders/taskBuilder";
 import { build } from "test/testUtils/testBuilder";
 import { aStory } from "test/testBuilders/storyBuilder";
@@ -36,7 +36,7 @@ describe("TaskGroup component", () => {
 
     const component = mount(<TaskGroup taskGroup={taskGroup} />);
 
-    const containsName = equalsText(component)("test");
+    const containsName = equals(component).textTo("test");
     expect(containsName).is.true;
   });
 
