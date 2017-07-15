@@ -1,5 +1,5 @@
 Dashboard
-  EpicContainer
+  EpicListBox
     Epic
       *EpicHeader
       *EpicBody
