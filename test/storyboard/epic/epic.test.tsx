@@ -6,11 +6,12 @@ import { mount, shallow, render, ShallowWrapper, ReactWrapper } from "enzyme";
 import { Story } from "models/story";
 import { Epic } from "storyboard/epic";
 import { Epic as EpicModel } from "models/epic";
+import { eventHelper } from "test/testUtils/eventHelpers";
 
 use(spies);
 
 describe("Epic component", () => {
-  it("should be wrapped into a .epic element", () => {
+  it("is wrapped into a .epic element", () => {
     const component = mount(<Epic />);
 
     const element = component.find(".epic");
@@ -18,7 +19,7 @@ describe("Epic component", () => {
     expect(element.exists()).is.true;
   });
 
-  it("should have a header element with .epic__header class", () => {
+  it("has a header element with .epic__header class", () => {
     const component = mount(<Epic />);
 
     const element = component.find(".epic__header");
@@ -26,7 +27,7 @@ describe("Epic component", () => {
     expect(element.exists()).is.true;
   });
 
-  it("should have a body element with .epic__body class", () => {
+  it("has a body element with .epic__body class", () => {
     const component = mount(<Epic />);
 
     const element = component.find(".epic__body");
@@ -34,7 +35,7 @@ describe("Epic component", () => {
     expect(element.exists()).is.true;
   });
 
-  it("should show header value", () => {
+  it("shows header value", () => {
     const component = mount(<Epic content="test header" />);
 
     const containsHeader = component.someWhere(
@@ -44,7 +45,7 @@ describe("Epic component", () => {
     expect(containsHeader).is.true;
   });
 
-  it(".epic__header should be focusable", () => {
+  it(".epic__header is focusable", () => {
     const component = mount(<Epic />);
     const header = component.find(".epic__header");
 
@@ -52,33 +53,17 @@ describe("Epic component", () => {
   });
 
   describe("onSelected event", () => {
-    const focusElement = (
-      component: ReactWrapper<any, any>,
-      selector: string
-    ) => {
-      const selectedComponent = component.find(selector);
-      const isComponentFocusable = (component: typeof selectedComponent) => {
-        return component.is("div") && component.prop("tabIndex") !== undefined;
-      };
-
-      if (!isComponentFocusable(selectedComponent)) {
-        return;
-      }
-
-      return selectedComponent.simulate("focus");
-    };
-
     it("is called when header gets focus", () => {
       const onSelected = spy();
       const component = mount(<Epic onSelected={onSelected} />);
 
-      focusElement(component, ".epic__header");
+      eventHelper(component.find('.epic__header')).focus();
 
       expect(onSelected).is.called();
     });
   });
 
-  describe("should contain stories and render their values", () => {
+  describe("contains stories and render their values", () => {
     const anEpicComponentWith = (stories: Array<Story>) =>
       mount(<Epic stories={stories} />);
 
