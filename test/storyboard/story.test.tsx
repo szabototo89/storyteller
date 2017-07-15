@@ -3,7 +3,7 @@ import { expect } from "chai";
 import { mount, shallow } from "enzyme";
 
 import { Story } from "storyboard/story";
-import { equalsText } from "test/utils/enzymeHelpers";
+import { equalsText } from "test/testUtils/enzymeHelpers";
 
 describe("Story component", () => {
   it("should have a .story element", () => {

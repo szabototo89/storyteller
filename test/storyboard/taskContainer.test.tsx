@@ -3,9 +3,9 @@ import { expect } from "chai";
 import { mount, shallow } from "enzyme";
 
 import { TaskContainer } from "storyboard/taskContainer";
-import { aTaskWithId } from "test/builders/taskBuilder";
-import { build } from "test/utils/testBuilder";
-import { equalsText } from "test/utils/enzymeHelpers";
+import { aTaskWithId } from "test/testBuilders/taskBuilder";
+import { build } from "test/testUtils/testBuilder";
+import { equalsText } from "test/testUtils/enzymeHelpers";
 
 describe("TaskContainer component", () => {
   it("contains task-container html element", () => {

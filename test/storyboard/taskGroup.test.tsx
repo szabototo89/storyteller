@@ -3,11 +3,11 @@ import { expect } from "chai";
 import { mount, shallow, ReactWrapper } from "enzyme";
 
 import { TaskGroup } from "storyboard/taskGroup";
-import { aTaskGroup } from "test/builders/taskGroupBuilder";
-import { equalsText } from "test/utils/enzymeHelpers";
-import { aTaskWithId } from "test/builders/taskBuilder";
-import { build } from "test/utils/testBuilder";
-import { aStory } from "test/builders/storyBuilder";
+import { aTaskGroup } from "test/testBuilders/taskGroupBuilder";
+import { equalsText } from "test/testUtils/enzymeHelpers";
+import { aTaskWithId } from "test/testBuilders/taskBuilder";
+import { build } from "test/testUtils/testBuilder";
+import { aStory } from "test/testBuilders/storyBuilder";
 
 describe("TaskGroup component", () => {
   const checkClassNames = (classNames: Array<string>) => (

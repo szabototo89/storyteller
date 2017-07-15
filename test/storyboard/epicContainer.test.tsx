@@ -4,8 +4,8 @@ import { render, mount, shallow, ShallowWrapper, ReactWrapper } from "enzyme";
 
 import { EpicContainer } from "storyboard/epicContainer";
 
-import { EpicBuilder, anEpic } from "test/builders/epicBuilder";
-import { findText, equalsText } from "test/utils/enzymeHelpers";
+import { EpicBuilder, anEpic } from "test/testBuilders/epicBuilder";
+import { findText, equalsText } from "test/testUtils/enzymeHelpers";
 
 describe("EpicList component", () => {
   it("should have a .epic-container element", () => {

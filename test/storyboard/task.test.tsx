@@ -5,8 +5,8 @@ import { mount, shallow, ShallowWrapper } from "enzyme";
 import { Task as TaskModel } from "models/task";
 import { Task } from "storyboard/task";
 
-import { findText, equalsText } from "test/utils/enzymeHelpers";
-import { aTask } from "test/builders/taskBuilder";
+import { findText, equalsText } from "test/testUtils/enzymeHelpers";
+import { aTask } from "test/testBuilders/taskBuilder";
 
 describe("Task component", () => {
   it("should have .task html element", () => {

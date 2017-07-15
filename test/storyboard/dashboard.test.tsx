@@ -6,12 +6,12 @@ import { Dashboard } from "storyboard/dashboard";
 import { TaskGroup } from "models/taskGroup";
 import { Epic } from "models/epic";
 
-import { aTask, aTaskWithId } from "test/builders/taskBuilder";
-import { aTaskGroup } from "test/builders/taskGroupBuilder";
-import { build } from "test/utils/testBuilder";
-import { equalsText } from "test/utils/enzymeHelpers";
-import { aStoryWithId } from "test/builders/storyBuilder";
-import { EpicBuilder, anEpic, anEpicWithId } from "test/builders/epicBuilder";
+import { aTask, aTaskWithId } from "test/testBuilders/taskBuilder";
+import { aTaskGroup } from "test/testBuilders/taskGroupBuilder";
+import { build } from "test/testUtils/testBuilder";
+import { equalsText } from "test/testUtils/enzymeHelpers";
+import { aStoryWithId } from "test/testBuilders/storyBuilder";
+import { EpicBuilder, anEpic, anEpicWithId } from "test/testBuilders/epicBuilder";
 
 describe("Dashboard component", () => {
   it("should have a .dashboard element", () => {
