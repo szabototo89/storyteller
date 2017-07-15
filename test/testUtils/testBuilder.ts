@@ -1,4 +1,4 @@
-import { WeakType } from "test/utils/weakType";
+import { WeakType } from "test/testUtils/weakType";
 
 export const isRequired = <Value>(
   value: Value | undefined,

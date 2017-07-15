@@ -1,9 +1,9 @@
 import { Epic } from "models/epic";
 
-import { WeakType } from "test/utils/weakType";
-import { TestBuilder, isRequired, build } from "test/utils/testBuilder";
+import { WeakType } from "test/testUtils/weakType";
+import { TestBuilder, isRequired, build } from "test/testUtils/testBuilder";
 import * as uuid from "uuid/v4";
-import { StoryBuilder } from "test/builders/storyBuilder";
+import { StoryBuilder } from "test/testBuilders/storyBuilder";
 
 export class EpicBuilder implements TestBuilder<Epic> {
   public constructor(private readonly epic: WeakType<Epic> = {}) {}

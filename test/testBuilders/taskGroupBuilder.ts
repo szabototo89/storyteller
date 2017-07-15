@@ -1,7 +1,7 @@
-import { TestBuilder, build } from "test/utils/testBuilder";
+import { TestBuilder, build } from "test/testUtils/testBuilder";
 import { TaskGroup } from "models/taskGroup";
-import { WeakType } from "test/utils/weakType";
-import { TaskBuilder } from "test/builders/taskBuilder";
+import { WeakType } from "test/testUtils/weakType";
+import { TaskBuilder } from "test/testBuilders/taskBuilder";
 
 export class TaskGroupBuilder implements TestBuilder<TaskGroup> {
   constructor(private readonly taskGroup: TaskGroup) {}

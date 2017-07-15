@@ -1,9 +1,9 @@
-import { TestBuilder, isRequired } from "test/utils/testBuilder";
+import { TestBuilder, isRequired } from "test/testUtils/testBuilder";
 import { Story } from "models/story";
-import { WeakType } from "test/utils/weakType";
-import { TaskBuilder } from "test/builders/taskBuilder";
+import { WeakType } from "test/testUtils/weakType";
+import { TaskBuilder } from "test/testBuilders/taskBuilder";
 
-import { build } from "test/utils/testBuilder";
+import { build } from "test/testUtils/testBuilder";
 import * as uuid from "uuid/v4";
 
 export class StoryBuilder implements TestBuilder<Story> {

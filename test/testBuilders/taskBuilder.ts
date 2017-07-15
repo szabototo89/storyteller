@@ -1,8 +1,8 @@
-import { TestBuilder, isRequired } from "test/utils/testBuilder";
+import { TestBuilder, isRequired } from "test/testUtils/testBuilder";
 import { Task } from "models/task";
-import { WeakType } from "test/utils/weakType";
+import { WeakType } from "test/testUtils/weakType";
 import * as uuid from "uuid/v4";
-import { TaskGroupBuilder } from "test/builders/taskGroupBuilder";
+import { TaskGroupBuilder } from "test/testBuilders/taskGroupBuilder";
 
 export class TaskBuilder implements TestBuilder<Task> {
   constructor(private readonly task: WeakType<Task> = {}) {}
