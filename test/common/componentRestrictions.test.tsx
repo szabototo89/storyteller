@@ -10,6 +10,8 @@ import { Task } from "storyboard/task";
 import { TaskContainer } from "storyboard/taskContainer";
 import { TaskGroup } from "storyboard/taskGroup";
 import { TaskGroupContainer } from "storyboard/taskGroupContainer";
+import { EpicHeader } from "storyboard/epic/epicHeader";
+import { EpicHeaderEditor } from "storyboard/epic/epicHeaderEditor";
 
 describe("Storyboard components", () => {
   const isPrimitiveComponent = (child: ShallowWrapper<any, any>) => {
@@ -21,6 +23,8 @@ describe("Storyboard components", () => {
     const components = [
       <Dashboard />,
       <Epic />,
+      <EpicHeader />,
+      <EpicHeaderEditor />,
       <EpicContainer />,
       <Story />,
       <Task />,
