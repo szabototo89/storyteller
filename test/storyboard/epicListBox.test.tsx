@@ -2,30 +2,30 @@ import * as React from "react";
 import { expect } from "chai";
 import { render, mount, shallow, ShallowWrapper, ReactWrapper } from "enzyme";
 
-import { EpicContainer } from "storyboard/epicContainer";
+import { EpicListBox } from "storyboard/epicListBox";
 
 import { EpicBuilder, anEpic } from "test/testBuilders/epicBuilder";
 import { findText, equalsText } from "test/testUtils/enzymeHelpers";
 
-describe("EpicList component", () => {
-  it("should have a .epic-container element", () => {
-    const component = shallow(<EpicContainer />);
+describe("EpicListBox component", () => {
+  it("should have a .epic-list-box element", () => {
+    const component = shallow(<EpicListBox />);
 
-    const element = component.find(".epic-container");
+    const element = component.find(".epic-list-box");
 
     expect(element.exists()).to.be.true;
   });
 
   describe("should show epic content", () => {
-    const anEpicContainer = (epics: Array<EpicBuilder>) => {
+    const anEpicListBox = (epics: Array<EpicBuilder>) => {
       return mount(
-        <EpicContainer epics={epics.map(builder => builder.build())} />
+        <EpicListBox epics={epics.map(builder => builder.build())} /> 
       );
     };
 
     it("when there is only one epic", () => {
       const epics = [anEpic().withContent("Lorem ipsum dolor.")];
-      const component = anEpicContainer(epics);
+      const component = anEpicListBox(epics);
 
       const epicContentHasBeenShown = epics
         .map(epic => epic.getContent())
@@ -40,7 +40,7 @@ describe("EpicList component", () => {
         anEpic().withId("2").withContent("Lorem ipsum dolor sit.")
       ];
 
-      const component = anEpicContainer(epics);
+      const component = anEpicListBox(epics);
 
       const epicContentHasBeenShown = epics
         .map(epic => epic.getContent())
@@ -51,7 +51,7 @@ describe("EpicList component", () => {
   });
 
   it("gets epics as optional", () => {
-    const passingUndefinedEpics = () => <EpicContainer epics={undefined} />;
+    const passingUndefinedEpics = () => <EpicListBox epics={undefined} />;
 
     expect(passingUndefinedEpics).to.not.throw();
   });
