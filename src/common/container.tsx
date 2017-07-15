@@ -1,13 +1,18 @@
 import * as React from "react";
 import { ReactElement } from "react";
 
-type Properties = {
-  children?: any;
-};
+export const Container = ({ children, isFocusable = false, ...rest }: any) => {
+  const getFocusableProperties = (isFocusable: boolean) => {
+    if (!isFocusable) return {};
+    return { tabIndex: -1 };
+  };
 
-export const Container = ({ children, ...rest }: any) => {
+  const containerProperties = {
+    ...getFocusableProperties(isFocusable)
+  };
+
   return (
-    <div {...rest}>
+    <div {...containerProperties} {...rest}>
       {children}
     </div>
   );
