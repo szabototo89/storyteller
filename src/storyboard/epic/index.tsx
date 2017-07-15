@@ -6,6 +6,7 @@ import { BasicEventHandler } from "utils/eventHandler";
 
 import "storyboard/epic/style";
 import { Epic as EpicModel } from "models/epic";
+import { EpicHeader } from "storyboard/epic/epicHeader";
 
 type Properties = {
   content?: string;
@@ -14,17 +15,10 @@ type Properties = {
 };
 
 export const Epic = ({ content, stories = [], onSelected }: Properties) => {
-  const handleFocus = () => onSelected && onSelected();
-
   return (
     <Container className="epic">
-      <Container
-        className="epic__header"
-        isFocusable={true}
-        onFocus={handleFocus}
-      >
-        {content}
-      </Container>
+      <EpicHeader content={content} onSelected={onSelected} />
+
       <Container className="epic__body">
         {stories.map(story => <Story key={story.id} content={story.content} />)}
       </Container>

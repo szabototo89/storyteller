@@ -7,9 +7,17 @@ type Properties = {
   epics?: Array<EpicModel>;
 };
 
-export const EpicContainer = ({ epics = [] }: Properties) =>
-  <Container className="epic-container">
-    {epics.map(epic =>
-      <Epic key={epic.id} content={epic.content} stories={epic.stories} />
-    )}
-  </Container>;
+export const EpicContainer = ({ epics = [] }: Properties) => {
+  return (
+    <Container className="epic-container">
+      {epics.map(epic =>
+        <Epic
+          key={epic.id}
+          content={epic.content}
+          stories={epic.stories}
+          onSelected={() => console.log(epic)}
+        />
+      )}
+    </Container>
+  );
+};
