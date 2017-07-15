@@ -4,7 +4,7 @@ import { mount, shallow, ShallowWrapper } from "enzyme";
 
 import { Dashboard } from "storyboard/dashboard";
 import { Epic } from "storyboard/epic";
-import { EpicContainer } from "storyboard/epicContainer";
+import { EpicListBox } from "storyboard/epicListBox";
 import { Story } from "storyboard/story";
 import { Task } from "storyboard/task";
 import { TaskContainer } from "storyboard/taskContainer";
@@ -25,7 +25,7 @@ describe("Storyboard components", () => {
       <Epic />,
       <EpicHeader />,
       <EpicHeaderEditor />,
-      <EpicContainer />,
+      <EpicListBox />,
       <Story />,
       <Task />,
       <TaskContainer />,

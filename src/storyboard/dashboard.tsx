@@ -2,7 +2,7 @@ import * as React from "react";
 import { Epic } from "models/epic";
 import { TaskGroup } from "models/taskGroup";
 import { Container } from "common/container";
-import { EpicContainer } from "storyboard/epicContainer";
+import { EpicListBox } from "storyboard/epicListBox";
 import { TaskGroupContainer } from "storyboard/taskGroupContainer";
 import { flatten } from "utils/arrayHelpers";
 
@@ -16,7 +16,7 @@ export const Dashboard = ({ epics = [], taskGroups = [] }: Properties) => {
 
   return (
     <Container className="dashboard">
-      <EpicContainer epics={epics} />
+      <EpicListBox epics={epics} />
       <TaskGroupContainer taskGroups={taskGroups} stories={stories} />
     </Container>
   );
