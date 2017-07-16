@@ -15,9 +15,9 @@ describe("EpicHeaderEditor component", () => {
   it("has a textbox editor", () => {
     const component = mount(<EpicHeaderEditor />);
 
-    const textBox = getTextBox(component);
+    const textBoxEditor = getTextBox(component);
 
-    expect(textBox.exists()).is.true;
+    expect(textBoxEditor.exists()).is.true;
   });
 
   it("has .epic-header-editor html element", () => {
@@ -26,6 +26,15 @@ describe("EpicHeaderEditor component", () => {
     const htmlElement = component.find(".epic-header-editor");
 
     expect(htmlElement.exists()).is.true;
+  });
+
+  it("has content property and textbox is populated with its value", () => {
+    const component = mount(<EpicHeaderEditor content={"test content"} />);
+    const textBoxEditor = getTextBox(component);
+
+    const textBoxEditorValue = textBoxEditor.props().value;
+
+    expect(textBoxEditorValue).equals("test content");
   });
 
   describe("onValueChanged event", () => {

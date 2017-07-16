@@ -8,7 +8,7 @@ type Properties = {
   onSelected?: EventHandler<Epic | null>;
 };
 
-export const EpicHeader = ({ content, onSelected }: Properties) => {
+export function EpicHeader({ content, onSelected }: Properties) {
   const handleFocus = () => onSelected && onSelected(null);
 
   return (
@@ -20,4 +20,4 @@ export const EpicHeader = ({ content, onSelected }: Properties) => {
       {content}
     </Container>
   );
-};
+}
