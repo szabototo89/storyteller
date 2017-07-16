@@ -1,11 +1,17 @@
 import * as React from "react";
-import { expect } from "chai";
+import { expect, spy, use } from "chai";
+import * as spies from "chai-spies";
 import { render, mount, shallow, ShallowWrapper, ReactWrapper } from "enzyme";
 
 import { EpicListBox } from "storyboard/epicListBox";
 
 import { EpicBuilder, anEpic } from "test/testBuilders/epicBuilder";
 import { findText, equalsText } from "test/testUtils/enzymeHelpers";
+import { build } from "test/testUtils/testBuilder";
+import { Wrapper } from "test/testUtils/wrapper";
+import { Epic } from "models/epic";
+
+use(spies);
 
 describe("EpicListBox component", () => {
   it("should have a .epic-list-box element", () => {
@@ -19,7 +25,7 @@ describe("EpicListBox component", () => {
   describe("should show epic content", () => {
     const anEpicListBox = (epics: Array<EpicBuilder>) => {
       return mount(
-        <EpicListBox epics={epics.map(builder => builder.build())} /> 
+        <EpicListBox epics={epics.map(builder => builder.build())} />
       );
     };
 
@@ -54,5 +60,42 @@ describe("EpicListBox component", () => {
     const passingUndefinedEpics = () => <EpicListBox epics={undefined} />;
 
     expect(passingUndefinedEpics).to.not.throw();
+  });
+
+  describe("onEpicSelected event", () => {
+    const epics = build([
+      anEpic().withId("1").withContent("test content 1"),
+      anEpic().withId("2").withContent("test content 2"),
+      anEpic().withId("3").withContent("test content 3")
+    ]);
+
+    const getFirstEpicComponent = (component: Wrapper<any, any>) =>
+      component.find("Epic").first();
+
+    it("has been called when an epic has been selected", () => {
+      const onEpicSelected = spy();
+      const component = shallow(
+        <EpicListBox epics={epics} onEpicSelected={onEpicSelected} />
+      );
+      const anEpicComponent = getFirstEpicComponent(component);
+
+      anEpicComponent.simulate("selected");
+
+      expect(onEpicSelected).is.called();
+    });
+
+    it("gets selected epic when selection has happened", () => {
+      const onEpicSelected = spy();
+      const component = shallow(
+        <EpicListBox epics={epics} onEpicSelected={onEpicSelected} />
+      );
+      const anEpicComponent = getFirstEpicComponent(component);
+
+      anEpicComponent.simulate("selected");
+
+      expect(onEpicSelected).is.called.with(
+        anEpic().withId("1").withContent("test content 1").build()
+      );
+    });
   });
 });
