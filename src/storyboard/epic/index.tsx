@@ -4,20 +4,22 @@ import { Container } from "common/container";
 import { Story } from "storyboard/story";
 import { BasicEventHandler } from "utils/eventHandler";
 
-import "storyboard/epic/style";
 import { Epic as EpicModel } from "models/epic";
 import { EpicHeader } from "storyboard/epic/epicHeader";
+import { EpicHeaderEditor } from "storyboard/epic/epicHeaderEditor";
+import { EpicProperties as Properties } from "storyboard/epic/epicProperties";
 
-type Properties = {
-  content?: string;
-  stories?: Array<StoryModel>;
-  onSelected?: BasicEventHandler;
-};
+import "storyboard/epic/style";
 
-export const Epic = ({ content, stories = [], onSelected }: Properties) => {
+export function Epic(properties: Properties) {
+  const { isEdited = false, content, stories = [] } = properties;
+  const { onSelected } = properties;
+
   return (
     <Container className="epic">
-      <EpicHeader content={content} onSelected={onSelected} />
+      {!isEdited && <EpicHeader content={content} onSelected={onSelected} />}
+
+      {isEdited && <EpicHeaderEditor content={content} />}
 
       <Container className="epic__body">
         {stories.map(story => <Story key={story.id} content={story.content} />)}
